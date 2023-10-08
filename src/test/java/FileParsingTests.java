@@ -1,6 +1,7 @@
 import com.codeborne.pdftest.PDF;
 import com.codeborne.xlstest.XLS;
 import com.opencsv.CSVReader;
+import models.Perfume;
 import org.junit.jupiter.api.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -16,7 +17,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FileParsingTests {
-
     ClassLoader cl = FileParsingTests.class.getClassLoader();
     ObjectMapper mapper = new ObjectMapper();
 
@@ -62,7 +62,7 @@ public class FileParsingTests {
             assertThat(perfume.getBrand()).isEqualTo("Xerjoff");
             assertThat(perfume.getName()).isNotNull();
             int currentYear = Year.now().getValue();
-            assertThat(perfume.getReleasedYear()).isBetween(1370 ,currentYear);
+            assertThat(perfume.getReleasedYear()).isBetween(1370, currentYear);
             assertEquals(perfume.getNotes().get(3), "tobacco");
             System.out.println("Successful check json file.");
         }
